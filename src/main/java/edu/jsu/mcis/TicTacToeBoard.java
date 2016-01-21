@@ -5,6 +5,7 @@ import java.util.*;
 public class TicTacToeBoard extends javax.swing.JFrame {
 
     public static TicTacToe game = new TicTacToe();
+	public static WinnerMessage winnerMessage = new WinnerMessage();
     public TicTacToeBoard() {
         boardComponents();
     }
@@ -337,23 +338,29 @@ public class TicTacToeBoard extends javax.swing.JFrame {
     {
         char mark = 'a';
         String currentMark = "a";
+		String message = "b";
         if(game.isSpotAvailable(0, 0)){
         game.placeMark(0,0);
         currentMark = game.getCurrentMark(mark, currentMark);
         upperLeftText.setText(currentMark);
         if(game.isTheBoardFull() && !game.isThereAWinner())
         {
-            System.out.println("Game is a tie");
+			message = "Game is a tie!";
+			winnerMessage.newMessage(message);
+            winnerMessage.setVisible(true);
         }
-        else if(game.isThereAWinner())
+        else if(game.isThereAWinner() && game.getCurrentMark(mark, currentMark).equals("X"))
         {
-            if(game.getCurrentMark(mark, currentMark).equals("X"))
-            {
-                System.out.println("Player 1 Wins!");
-            }
-            else
-                System.out.println("Player 2 Wins!");
+			message = "Player 1 Wins!";
+			winnerMessage.newMessage(message);
+            winnerMessage.setVisible(true);
         }
+		else if(game.isThereAWinner() && game.getCurrentMark(mark, currentMark).equals("O"))
+		{
+			message = "Player 2 Wins!";
+			winnerMessage.newMessage(message);
+			winnerMessage.setVisible(true);
+		}
         else{
         game.changePlayer();
         }
@@ -364,22 +371,28 @@ public class TicTacToeBoard extends javax.swing.JFrame {
     {
         char mark = 'a';
         String currentMark = "a";
+		String message = "b";
         if(game.isSpotAvailable(0, 1)){
         game.placeMark(0,1);
         upperMiddleText.setText(game.getCurrentMark(mark, currentMark));
         if(game.isTheBoardFull() && !game.isThereAWinner())
         {
-            System.out.println("Game is a tie");
+			message = "Game is a tie!";
+			winnerMessage.newMessage(message);
+            winnerMessage.setVisible(true);
         }
-        else if(game.isThereAWinner())
+        else if(game.isThereAWinner() && game.getCurrentMark(mark, currentMark).equals("X"))
         {
-            if(game.getCurrentMark(mark, currentMark).equals("X"))
-            {
-                System.out.println("Player 1 Wins!");
-            }
-            else
-                System.out.println("Player 2 Wins!");
+			message = "Player 1 Wins!";
+			winnerMessage.newMessage(message);
+            winnerMessage.setVisible(true);
         }
+		else if(game.isThereAWinner() && game.getCurrentMark(mark, currentMark).equals("O"))
+		{
+			message = "Player 2 Wins!";
+			winnerMessage.newMessage(message);
+			winnerMessage.setVisible(true);
+		}
         else{
         game.changePlayer();
         }
@@ -390,22 +403,28 @@ public class TicTacToeBoard extends javax.swing.JFrame {
     {
         char mark = 'a';
         String currentMark = "a";
+		String message = "b";
         if(game.isSpotAvailable(0, 2)){
         game.placeMark(0,2);
         upperRightText.setText(game.getCurrentMark(mark, currentMark));
         if(game.isTheBoardFull() && !game.isThereAWinner())
         {
-            System.out.println("Game is a tie");
+			message = "Game is a tie!";
+			winnerMessage.newMessage(message);
+            winnerMessage.setVisible(true);
         }
-        else if(game.isThereAWinner())
+        else if(game.isThereAWinner() && game.getCurrentMark(mark, currentMark).equals("X"))
         {
-            if(game.getCurrentMark(mark, currentMark).equals("X"))
-            {
-                System.out.println("Player 1 Wins!");
-            }
-            else
-                System.out.println("Player 2 Wins!");
+			message = "Player 1 Wins!";
+			winnerMessage.newMessage(message);
+            winnerMessage.setVisible(true);
         }
+		else if(game.isThereAWinner() && game.getCurrentMark(mark, currentMark).equals("O"))
+		{
+			message = "Player 2 Wins!";
+			winnerMessage.newMessage(message);
+			winnerMessage.setVisible(true);
+		}
         else{
         game.changePlayer();
         }
@@ -416,22 +435,28 @@ public class TicTacToeBoard extends javax.swing.JFrame {
         
         char mark = 'a';
         String currentMark = "a";
+		String message = "b";
         if(game.isSpotAvailable(1, 0)){
         game.placeMark(1,0);
         middleLeftText.setText(game.getCurrentMark(mark, currentMark));
         if(game.isTheBoardFull() && !game.isThereAWinner())
         {
-            System.out.println("Game is a tie");
+			message = "Game is a tie!";
+			winnerMessage.newMessage(message);
+            winnerMessage.setVisible(true);
         }
-        else if(game.isThereAWinner())
+        else if(game.isThereAWinner() && game.getCurrentMark(mark, currentMark).equals("X"))
         {
-            if(game.getCurrentMark(mark, currentMark).equals("X"))
-            {
-                System.out.println("Player 1 Wins!");
-            }
-            else
-                System.out.println("Player 2 Wins!");
+			message = "Player 1 Wins!";
+			winnerMessage.newMessage(message);
+            winnerMessage.setVisible(true);
         }
+		else if(game.isThereAWinner() && game.getCurrentMark(mark, currentMark).equals("O"))
+		{
+			message = "Player 2 Wins!";
+			winnerMessage.newMessage(message);
+			winnerMessage.setVisible(true);
+		}
         else{
         game.changePlayer();
         }
@@ -441,22 +466,28 @@ public class TicTacToeBoard extends javax.swing.JFrame {
     {
         char mark = 'a';
         String currentMark = "a";
+		String message = "Player";
         if(game.isSpotAvailable(1, 1)){
         game.placeMark(1,1);
         middleText.setText(game.getCurrentMark(mark, currentMark));
         if(game.isTheBoardFull() && !game.isThereAWinner())
         {
-            System.out.println("Game is a tie");
+			message = "Game is a tie!";
+			winnerMessage.newMessage(message);
+            winnerMessage.setVisible(true);
         }
-        else if(game.isThereAWinner())
+        else if(game.isThereAWinner() && game.getCurrentMark(mark, currentMark).equals("X"))
         {
-            if(game.getCurrentMark(mark, currentMark).equals("X"))
-            {
-                System.out.println("Player 1 Wins!");
-            }
-            else
-                System.out.println("Player 2 Wins!");
+			message = "Player 1 Wins!";
+			winnerMessage.newMessage(message);
+            winnerMessage.setVisible(true);
         }
+		else if(game.isThereAWinner() && game.getCurrentMark(mark, currentMark).equals("O"))
+		{
+			message = "Player 2 Wins!";
+			winnerMessage.newMessage(message);
+			winnerMessage.setVisible(true);
+		}
         else{
         game.changePlayer();
         }
@@ -466,22 +497,28 @@ public class TicTacToeBoard extends javax.swing.JFrame {
     {
         char mark = 'a';
         String currentMark = "a";
+		String message = "b";
         if(game.isSpotAvailable(1, 2)){
         game.placeMark(1,2);
         middleRightText.setText(game.getCurrentMark(mark, currentMark));
         if(game.isTheBoardFull() && !game.isThereAWinner())
         {
-            System.out.println("Game is a tie");
+			message = "Game is a tie!";
+			winnerMessage.newMessage(message);
+            winnerMessage.setVisible(true);
         }
-        else if(game.isThereAWinner())
+        else if(game.isThereAWinner() && game.getCurrentMark(mark, currentMark).equals("X"))
         {
-            if(game.getCurrentMark(mark, currentMark).equals("X"))
-            {
-                System.out.println("Player 1 Wins!");
-            }
-            else
-                System.out.println("Player 2 Wins!");
+			message = "Player 1 Wins!";
+			winnerMessage.newMessage(message);
+            winnerMessage.setVisible(true);
         }
+		else if(game.isThereAWinner() && game.getCurrentMark(mark, currentMark).equals("O"))
+		{
+			message = "Player 2 Wins!";
+			winnerMessage.newMessage(message);
+			winnerMessage.setVisible(true);
+		}
         else{
         game.changePlayer();
         }
@@ -491,22 +528,28 @@ public class TicTacToeBoard extends javax.swing.JFrame {
     {
         char mark = 'a';
         String currentMark = "a";
+		String message = "b";
         if(game.isSpotAvailable(2, 0)){
         game.placeMark(2, 0);
         bottomLeftText.setText(game.getCurrentMark(mark, currentMark));
         if(game.isTheBoardFull() && !game.isThereAWinner())
         {
-            System.out.println("Game is a tie");
+			message = "Game is a tie!";
+			winnerMessage.newMessage(message);
+            winnerMessage.setVisible(true);
         }
-        else if(game.isThereAWinner())
+        else if(game.isThereAWinner() && game.getCurrentMark(mark, currentMark).equals("X"))
         {
-            if(game.getCurrentMark(mark, currentMark).equals("X"))
-            {
-                System.out.println("Player 1 Wins!");
-            }
-            else
-                System.out.println("Player 2 Wins!");
+			message = "Player 1 Wins!";
+			winnerMessage.newMessage(message);
+            winnerMessage.setVisible(true);
         }
+		else if(game.isThereAWinner() && game.getCurrentMark(mark, currentMark).equals("O"))
+		{
+			message = "Player 2 Wins!";
+			winnerMessage.newMessage(message);
+			winnerMessage.setVisible(true);
+		}
         else{
         game.changePlayer();
         }
@@ -516,22 +559,28 @@ public class TicTacToeBoard extends javax.swing.JFrame {
     {
         char mark = 'a';
         String currentMark = "a";
+		String message = "b";
         if(game.isSpotAvailable(2, 1)){
         game.placeMark(2,1);
         bottomMiddleText.setText(game.getCurrentMark(mark, currentMark));
         if(game.isTheBoardFull() && !game.isThereAWinner())
         {
-            System.out.println("Game is a tie");
+			message = "Game is a tie!";
+			winnerMessage.newMessage(message);
+            winnerMessage.setVisible(true);
         }
-        else if(game.isThereAWinner())
+        else if(game.isThereAWinner() && game.getCurrentMark(mark, currentMark).equals("X"))
         {
-            if(game.getCurrentMark(mark, currentMark).equals("X"))
-            {
-                System.out.println("Player 1 Wins!");
-            }
-            else
-                System.out.println("Player 2 Wins!");
+			message = "Player 1 Wins!";
+			winnerMessage.newMessage(message);
+            winnerMessage.setVisible(true);
         }
+		else if(game.isThereAWinner() && game.getCurrentMark(mark, currentMark).equals("O"))
+		{
+			message = "Player 2 Wins!";
+			winnerMessage.newMessage(message);
+			winnerMessage.setVisible(true);
+		}
         else{
         game.changePlayer();
         }
@@ -541,22 +590,28 @@ public class TicTacToeBoard extends javax.swing.JFrame {
     {
         char mark = 'a';
         String currentMark = "a";
+		String message = "b";
         if(game.isSpotAvailable(2, 2)){
         game.placeMark(2, 2);
         bottomRightText.setText(game.getCurrentMark(mark, currentMark));
         if(game.isTheBoardFull() && !game.isThereAWinner())
         {
-            System.out.println("Game is a tie");
+			message = "Game is a tie!";
+			winnerMessage.newMessage(message);
+            winnerMessage.setVisible(true);
         }
-        else if(game.isThereAWinner())
+        else if(game.isThereAWinner() && game.getCurrentMark(mark, currentMark).equals("X"))
         {
-            if(game.getCurrentMark(mark, currentMark).equals("X"))
-            {
-                System.out.println("Player 1 Wins!");
-            }
-            else
-                System.out.println("Player 2 Wins!");
+			message = "Player 1 Wins!";
+			winnerMessage.newMessage(message);
+            winnerMessage.setVisible(true);
         }
+		else if(game.isThereAWinner() && game.getCurrentMark(mark, currentMark).equals("O"))
+		{
+			message = "Player 2 Wins!";
+			winnerMessage.newMessage(message);
+			winnerMessage.setVisible(true);
+		}
         else{
         game.changePlayer();
         }
