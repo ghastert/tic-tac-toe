@@ -1,0 +1,153 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../.resources/report.css" type="text/css"/><link rel="shortcut icon" href="../.resources/report.gif" type="image/gif"/><title>TicTacToe.java</title><link rel="stylesheet" href="../.resources/prettify.css" type="text/css"/><script type="text/javascript" src="../.resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../.sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">tic-tac-toe</a> &gt; <a href="index.source.html" class="el_package">edu.jsu.mcis</a> &gt; <span class="el_source">TicTacToe.java</span></div><h1>TicTacToe.java</h1><pre class="source lang-java linenums">package edu.jsu.mcis;
+
+import java.util.*;
+
+public class TicTacToe 
+{
+
+	private static char[][] board;
+	private static char currentPlayerMark;
+
+	public TicTacToe()
+<span class="fc" id="L12">	{</span>
+<span class="fc" id="L13">		board = new char[3][3];</span>
+<span class="fc" id="L14">		currentPlayerMark = 'X';</span>
+<span class="fc" id="L15">		initializeBoard();</span>
+<span class="fc" id="L16">	}</span>
+
+	public static void initializeBoard()
+	{
+<span class="fc bfc" id="L20" title="All 2 branches covered.">		for(int i = 0; i &lt; 3; i++)</span>
+		{
+<span class="fc bfc" id="L22" title="All 2 branches covered.">			for(int j = 0; j &lt; 3; j++)</span>
+			{
+<span class="fc" id="L24">				board[i][j] = '-';</span>
+			}
+		}
+	
+<span class="fc" id="L28">	}</span>
+
+	public static char getCurrentMark(char[][] testBoard, int row, int col)
+	{
+<span class="fc" id="L32">		testBoard[row][col] = board[row][col];</span>
+<span class="fc" id="L33">		return testBoard[row][col];</span>
+	}
+	
+	public static String getCurrentMark(char currentMark, String stringCurrentMark)
+	{
+<span class="nc" id="L38">		currentMark = currentPlayerMark;</span>
+<span class="nc" id="L39">		stringCurrentMark = Character.toString(currentMark);</span>
+<span class="nc" id="L40">		return stringCurrentMark;</span>
+	}
+	
+	public static void displayTheBoard()
+	{	
+<span class="fc bfc" id="L45" title="All 2 branches covered.">		for(int i = 0; i &lt; 3; i++)</span>
+		{
+<span class="fc bfc" id="L47" title="All 2 branches covered.">			for(int j = 0; j &lt; 3; j++)</span>
+			{
+<span class="fc bfc" id="L49" title="All 2 branches covered.">				if(j == 2)</span>
+				{
+<span class="fc" id="L51">					System.out.print(board[i][j]);</span>
+				}
+				else
+				{
+<span class="fc" id="L55">					System.out.print(board[i][j] + &quot; | &quot;);</span>
+				}
+			}
+<span class="fc" id="L58">			System.out.println();</span>
+<span class="fc" id="L59">			System.out.println(&quot;-----------&quot;);</span>
+		}
+<span class="fc" id="L61">	}</span>
+
+	public static boolean isTheBoardFull()
+	{
+<span class="fc" id="L65">		boolean boardIsFull = true;</span>
+		
+<span class="fc bfc" id="L67" title="All 2 branches covered.">		for(int i = 0; i &lt; 3; i++)</span>
+		{
+<span class="fc bfc" id="L69" title="All 2 branches covered.">			for(int j = 0; j &lt; 3; j++)</span>
+			{
+<span class="fc bfc" id="L71" title="All 2 branches covered.">				if(board[i][j] == '-')</span>
+				{
+<span class="fc" id="L73">					boardIsFull = false;</span>
+				}
+			}
+		}
+<span class="fc" id="L77">		return boardIsFull;</span>
+	}
+	
+	public static boolean isSpotAvailable(int row, int column)
+	{
+<span class="pc bpc" id="L82" title="1 of 2 branches missed.">		return (board[row][column] == '-');</span>
+	}
+	
+	private static boolean isThereThreeInARow(char spot1, char spot2, char spot3)
+	{
+<span class="pc bpc" id="L87" title="1 of 6 branches missed.">		return(spot1 != '-') &amp;&amp; (spot1 == spot2) &amp;&amp; (spot2 == spot3);</span>
+	}
+	
+	public static boolean isThereAWinner()
+	{
+<span class="pc bpc" id="L92" title="2 of 6 branches missed.">		return (checkRowsForWin() || checkColumnsForWin() || checkDiagnolsForWin());</span>
+	}
+	
+	private static boolean checkRowsForWin()
+	{
+<span class="fc bfc" id="L97" title="All 2 branches covered.">		for(int i = 0; i &lt; 3; i++)</span>
+		{
+<span class="fc bfc" id="L99" title="All 2 branches covered.">			if(isThereThreeInARow(board[i][0], board[i][1], board[i][2]) == true)</span>
+			{
+<span class="fc" id="L101">				return true;</span>
+			}
+		}
+<span class="fc" id="L104">		return false;</span>
+	}
+	
+	private static boolean checkColumnsForWin()
+	{
+<span class="fc bfc" id="L109" title="All 2 branches covered.">		for(int i = 0; i &lt; 3; i++)</span>
+		{
+<span class="pc bpc" id="L111" title="1 of 2 branches missed.">			if(isThereThreeInARow(board[0][i], board[1][i], board[2][i]) == true)</span>
+			{
+<span class="nc" id="L113">				return true;</span>
+			}
+		}
+<span class="fc" id="L116">		return false;</span>
+	}
+	
+	private static boolean checkDiagnolsForWin()
+	{
+<span class="pc bpc" id="L121" title="2 of 4 branches missed.">		return((isThereThreeInARow(board[0][0], board[1][1], board[2][2]) == true) || (isThereThreeInARow(board[0][2], board[1][1], board[2][0]) == true));</span>
+		
+	}
+	
+	public static char changePlayer()
+	{
+<span class="fc bfc" id="L127" title="All 2 branches covered.">		if(currentPlayerMark == 'X')</span>
+		{
+<span class="fc" id="L129">			currentPlayerMark = 'O';</span>
+		}
+		else
+		{
+<span class="fc" id="L133">			currentPlayerMark = 'X';</span>
+		}
+<span class="fc" id="L135">		return currentPlayerMark;</span>
+	}
+	
+	
+	
+	public static void placeMark(int row, int column)
+	{
+<span class="pc bpc" id="L142" title="2 of 4 branches missed.">		if((row&gt;= 0) &amp;&amp; (row &lt; 3))</span>
+		{
+<span class="pc bpc" id="L144" title="2 of 4 branches missed.">			if((column &gt;= 0) &amp;&amp; (column &lt; 3))</span>
+			{
+<span class="fc" id="L146">				board[row][column] = currentPlayerMark;						</span>
+			}
+		}
+<span class="fc" id="L149">	}</span>
+	
+	
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.eclemma.org/jacoco">JaCoCo</a> 0.7.1.201405082137</span></div></body></html>
