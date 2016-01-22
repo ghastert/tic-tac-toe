@@ -148,6 +148,82 @@ public class TicTacToe
 		}
 <span class="fc" id="L149">	}</span>
 	
+	public static void main(String args[]){
+<span class="nc" id="L152">		TicTacToe newGame = new TicTacToe();</span>
+		
+		String playerResponse;
+<span class="nc" id="L155">		Scanner getResponse = new Scanner(System.in);</span>
+<span class="nc" id="L156">		char player1Symbol = 'X';</span>
+<span class="nc" id="L157">		char player2Symbol = 'O';</span>
+		int rowToBeMarked;
+		int columnToBeMarked;
+<span class="nc" id="L160">		boolean spotIsAvailable = true;</span>
+<span class="nc" id="L161">		Scanner getRow = new Scanner(System.in);</span>
+<span class="nc" id="L162">		Scanner getColumn = new Scanner(System.in);</span>
+		
+		
+<span class="nc" id="L165">			newGame.initializeBoard();</span>
+<span class="nc" id="L166">			newGame.displayTheBoard();</span>
+			do
+			{
+<span class="nc bnc" id="L169" title="All 2 branches missed.">				for(int i = 0; i &lt; 3; i++)</span>
+				{				
+<span class="nc" id="L171">					System.out.println();</span>
+				}
+			
+				
+				do
+				{
+<span class="nc" id="L177">					System.out.println(&quot;Which row would you like to place your mark? 0-2: &quot;);</span>
+<span class="nc" id="L178">					rowToBeMarked = getRow.nextInt();</span>
+				
+<span class="nc" id="L180">					System.out.println(&quot;Where column would you like to place your mark: 0-2: &quot;);</span>
+<span class="nc" id="L181">					columnToBeMarked = getColumn.nextInt();</span>
+					
+<span class="nc bnc" id="L183" title="All 2 branches missed.">					if(isSpotAvailable(rowToBeMarked, columnToBeMarked))</span>
+					{
+<span class="nc" id="L185">						newGame.placeMark(rowToBeMarked, columnToBeMarked);</span>
+					}
+					else
+					{
+<span class="nc" id="L189">						System.out.println(&quot;Spot is unavailable. Please try again.&quot;);</span>
+<span class="nc" id="L190">                                                newGame.changePlayer();</span>
+					}
+<span class="nc bnc" id="L192" title="All 2 branches missed.">				}while(isSpotAvailable(rowToBeMarked, columnToBeMarked));</span>
+				
+<span class="nc bnc" id="L194" title="All 2 branches missed.">                if(!isThereAWinner())</span>
+                {
+<span class="nc" id="L196">					newGame.changePlayer();</span>
+                }
+<span class="nc bnc" id="L198" title="All 2 branches missed.">				for(int i = 0; i &lt; 3; i++)</span>
+				{				
+<span class="nc" id="L200">					System.out.println();</span>
+				}
+				
+<span class="nc" id="L203">				newGame.displayTheBoard();</span>
+<span class="nc" id="L204">				newGame.isThereAWinner();</span>
+<span class="nc" id="L205">				newGame.isTheBoardFull();</span>
+			
+<span class="nc bnc" id="L207" title="All 4 branches missed.">			}while(!isThereAWinner() &amp;&amp; !isTheBoardFull());</span>
+			
+<span class="nc bnc" id="L209" title="All 4 branches missed.">			if(player1Symbol == currentPlayerMark &amp;&amp; isThereAWinner())</span>
+			{
+<span class="nc" id="L211">				System.out.println(&quot;Player 1 Wins!&quot;);</span>
+<span class="nc" id="L212">				System.out.println();</span>
+			}
+<span class="nc bnc" id="L214" title="All 4 branches missed.">			else if(player2Symbol == currentPlayerMark &amp;&amp; isThereAWinner())</span>
+			{
+<span class="nc" id="L216">				System.out.println(&quot;Player 2 Wins!&quot;);</span>
+<span class="nc" id="L217">				System.out.println();</span>
+			}
+<span class="nc bnc" id="L219" title="All 2 branches missed.">            else if(isTheBoardFull())</span>
+            {
+<span class="nc" id="L221">                System.out.println(&quot;Game is a tie!&quot;);</span>
+<span class="nc" id="L222">                System.out.println();</span>
+            }
+
+<span class="nc" id="L225">		System.out.println(&quot;Thanks for playing!&quot;);</span>
+<span class="nc" id="L226">	}</span>
 	
 }
 </pre><div class="footer"><span class="right">Created with <a href="http://www.eclemma.org/jacoco">JaCoCo</a> 0.7.1.201405082137</span></div></body></html>

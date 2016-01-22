@@ -148,5 +148,81 @@ public class TicTacToe
 		}
 	}
 	
+	public static void main(String args[]){
+		TicTacToe newGame = new TicTacToe();
+		
+		String playerResponse;
+		Scanner getResponse = new Scanner(System.in);
+		char player1Symbol = 'X';
+		char player2Symbol = 'O';
+		int rowToBeMarked;
+		int columnToBeMarked;
+		boolean spotIsAvailable = true;
+		Scanner getRow = new Scanner(System.in);
+		Scanner getColumn = new Scanner(System.in);
+		
+		
+			newGame.initializeBoard();
+			newGame.displayTheBoard();
+			do
+			{
+				for(int i = 0; i < 3; i++)
+				{				
+					System.out.println();
+				}
+			
+				
+				do
+				{
+					System.out.println("Which row would you like to place your mark? 0-2: ");
+					rowToBeMarked = getRow.nextInt();
+				
+					System.out.println("Where column would you like to place your mark: 0-2: ");
+					columnToBeMarked = getColumn.nextInt();
+					
+					if(isSpotAvailable(rowToBeMarked, columnToBeMarked))
+					{
+						newGame.placeMark(rowToBeMarked, columnToBeMarked);
+					}
+					else
+					{
+						System.out.println("Spot is unavailable. Please try again.");
+                                                newGame.changePlayer();
+					}
+				}while(isSpotAvailable(rowToBeMarked, columnToBeMarked));
+				
+                if(!isThereAWinner())
+                {
+					newGame.changePlayer();
+                }
+				for(int i = 0; i < 3; i++)
+				{				
+					System.out.println();
+				}
+				
+				newGame.displayTheBoard();
+				newGame.isThereAWinner();
+				newGame.isTheBoardFull();
+			
+			}while(!isThereAWinner() && !isTheBoardFull());
+			
+			if(player1Symbol == currentPlayerMark && isThereAWinner())
+			{
+				System.out.println("Player 1 Wins!");
+				System.out.println();
+			}
+			else if(player2Symbol == currentPlayerMark && isThereAWinner())
+			{
+				System.out.println("Player 2 Wins!");
+				System.out.println();
+			}
+            else if(isTheBoardFull())
+            {
+                System.out.println("Game is a tie!");
+                System.out.println();
+            }
+
+		System.out.println("Thanks for playing!");
+	}
 	
 }
