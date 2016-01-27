@@ -17,37 +17,33 @@ public class TicTacToeTest {
 	@Test
 	public void testInitialBoardIsEmpty() {
 		t.initializeBoard();
-		boolean isBoardEmpty = t.isTheBoardFull() == false;
-		assertTrue(isBoardEmpty);
+		assertTrue(t.isBoardEmpty());
 	}
 	
 	@Test
 	public void testMarkXInUpperRightCorner() {
 		char mark = 'X';
-		char[][] newBoard = new char[3][3];
+		String currentMark = "O";
 		t.initializeBoard();
-		t.displayTheBoard();
 		t.placeMark(0, 2);
-		boolean isMarkX = (t.isSpotAvailable(0,2) == false) && (t.getCurrentMark(newBoard, 0, 2) == mark);
+		boolean isMarkX = (t.isSpotAvailable(0,2) == false) && (t.getCurrentMark(mark, currentMark).equals("X"));
 		assertTrue(isMarkX);
 	}
 	
     @Test
 	public void testMarkOInBottomLeftCorner() {
-		char mark = 'O';
-		char[][] newBoard = new char[3][3];
+		char mark = 'a';
+		String currentMark = "a";
 		t.initializeBoard();
-		t.displayTheBoard();
 		t.changePlayer();
 		t.placeMark(2, 0);
-		boolean isMarkO = (t.isSpotAvailable(2,0) == false) && (t.getCurrentMark(newBoard, 2, 0) == mark);
+		boolean isMarkO = (t.isSpotAvailable(2,0) == false) && (t.getCurrentMark(mark, currentMark).equals("O"));
 		assertTrue(isMarkO);
 	}
 	
 	@Test
 	public void testUnableToMarkOverExistingMark() {
 		t.initializeBoard();
-		t.displayTheBoard();
 		t.placeMark(0,0);
 		t.changePlayer();
 		assertFalse(t.isSpotAvailable(0,0));
@@ -72,7 +68,6 @@ public class TicTacToeTest {
 		t.placeMark(1,1);
 		t.changePlayer();
 		t.placeMark(0,2);
-		t.displayTheBoard();
 		assertTrue(t.isThereAWinner());
 	}
 	
